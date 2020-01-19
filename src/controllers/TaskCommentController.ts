@@ -10,7 +10,7 @@ class TaskCommentController {
     const limit = req.query.limit;
     const offset = req.query.offset;
 
-    let query = `select * from taskComments`;
+    let query = `select * from task_comments`;
 
     //Get taskComments from database
     const taskCommentsRepository = getRepository(TaskComments);
@@ -40,18 +40,18 @@ class TaskCommentController {
   };
   static newTaskComments = async (req: Request, res: Response): Promise<void> => {
     //Get parameters from the body
-    const {reply_id,
-      users_id,
-      nice_cnt,
-      task_id,
+    const {replyId,
+      usersId,
+      niceCnt,
+      taskId,
       comment,
       updatedAt} = req.body;
 
     const taskComments = new TaskComments({
-      reply_id,
-      users_id,
-      nice_cnt,
-      task_id,
+      replyId,
+      usersId,
+      niceCnt,
+      taskId,
       comment,
       updatedAt
     });
@@ -80,11 +80,12 @@ class TaskCommentController {
     //Get the ID from the url
     const id = req.query.id;
 
+
     //Get values from the body
-    const {reply_id,
-      users_id,
-      nice_cnt,
-      task_id,
+    const {replyId,
+      usersId,
+      niceCnt,
+      taskId,
       comment,
       updatedAt } = req.body;
 
@@ -100,10 +101,10 @@ class TaskCommentController {
     }
 
     //Validate the new values on model
-    taskComments.update({reply_id,
-      users_id,
-      nice_cnt,
-      task_id,
+    taskComments.update({replyId,
+      usersId,
+      niceCnt,
+      taskId,
       comment,
       updatedAt});
 
