@@ -7,10 +7,10 @@ import {
 } from 'typeorm';
 
 interface UserInterface {
-  reply_id: number;
-  users_id: number;
-  nice_cnt: number;
-  task_id: number;
+  replyId: number;
+  usersId: number;
+  niceCnt: number;
+  taskId: number;
   comment: string;
   updatedAt: Date;
 }
@@ -21,19 +21,19 @@ export class TaskComments {
   readonly id!: number;
 
   @Column({ name: 'task_id', type: 'int' })
-  task_id!: number;
+  taskId!: number;
 
   @Column({ name: 'users_id', type: 'int' })
-  users_id!: number;
+  usersId!: number;
 
   @Column({ name: 'comment', type: 'text' })
   comment!: string;
 
   @Column({ name: 'reply_id', type: 'int' })
-  reply_id!: number;
+  replyId!: number;
 
   @Column({ name: 'nice_cnt', type: 'int' })
-  nice_cnt!: number;
+  niceCnt!: number;
 
   @Column({ name: 'createdAt', type: 'date' })
   @CreateDateColumn()
@@ -44,21 +44,21 @@ export class TaskComments {
   updatedAt!: Date;
 
   constructor(obj?: UserInterface) {
-    this.users_id = (obj && obj.users_id) || this.users_id;
-    this.task_id = (obj && obj.task_id) || this.task_id;
+    this.usersId = (obj && obj.usersId) || this.usersId;
+    this.taskId = (obj && obj.taskId) || this.taskId;
     this.comment = (obj && obj.comment) || this.comment;
-    this.reply_id = (obj && obj.reply_id) || this.reply_id;
-    this.nice_cnt = (obj && obj.nice_cnt) || this.nice_cnt;
+    this.replyId = (obj && obj.replyId) || this.replyId;
+    this.niceCnt = (obj && obj.niceCnt) || this.niceCnt;
     this.updatedAt = (obj && obj.updatedAt) || this.updatedAt;
   }
 
   /// no commit with update
   update(obj?: UserInterface) {
-    this.users_id = (obj && obj.users_id) || this.users_id;
-    this.task_id = (obj && obj.task_id) || this.task_id;
+    this.usersId = (obj && obj.usersId) || this.usersId;
+    this.taskId = (obj && obj.taskId) || this.taskId;
     this.comment = (obj && obj.comment) || this.comment;
-    this.reply_id = (obj && obj.reply_id) || this.reply_id;
-    this.nice_cnt = (obj && obj.nice_cnt) || this.nice_cnt;
+    this.replyId = (obj && obj.replyId) || this.replyId;
+    this.niceCnt = (obj && obj.niceCnt) || this.niceCnt;
     this.updatedAt = (obj && obj.updatedAt) || this.updatedAt;
   }
 }

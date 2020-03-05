@@ -7,8 +7,8 @@ import {
 } from 'typeorm';
 
 interface UserInterface {
-  users_id: number,
-  contents_json: JSON,
+  usersId: number,
+  contentsJson: JSON,
   updatedAt: Date
 }
 
@@ -17,12 +17,12 @@ export class Tasks {
   @PrimaryGeneratedColumn()
   readonly id!: number;
 
-  @Column({ name: 'users_id', type: 'number' })
-  users_id!: number;
+  @Column({ name: 'users_id', type: 'int' })
+  usersId!: number;
 
 
   @Column({ name: 'contents_json', type: 'json' })
-  contents_json!: JSON;
+  contentsJson!: JSON;
 
   @Column({ name: 'createdAt', type: 'date' })
   @CreateDateColumn()
@@ -33,15 +33,15 @@ export class Tasks {
   updatedAt!: Date;
 
   constructor(obj?: UserInterface) {
-    this.users_id = (obj && obj.users_id) || this.users_id;
+    this.usersId = (obj && obj.usersId) || this.usersId;
     this.updatedAt = (obj && obj.updatedAt) || this.updatedAt;
-    this.contents_json = (obj && obj.contents_json) || this.contents_json;
+    this.contentsJson = (obj && obj.contentsJson) || this.contentsJson;
   }
 
   /// no commit with update
   update(obj?: UserInterface) {
-    this.users_id = (obj && obj.users_id) || this.users_id;
+    this.usersId = (obj && obj.usersId) || this.usersId;
     this.updatedAt = (obj && obj.updatedAt) || this.updatedAt;
-    this.contents_json = (obj && obj.contents_json) || this.contents_json;
+    this.contentsJson = (obj && obj.contentsJson) || this.contentsJson;
   }
 }

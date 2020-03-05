@@ -27,6 +27,7 @@ class TasksController {
   static getOneById = async (req: Request, res: Response): Promise<void> => {
     //Get the ID from the url
     const id = req.query.id;
+    console.log(id);
 
     //Get tasks from database
     const tasksRepository = getRepository(Tasks);
@@ -40,13 +41,13 @@ class TasksController {
   };
   static newTasks = async (req: Request, res: Response): Promise<void> => {
     //Get parameters from the body
-    const { users_id,
-      contents_json,
+    const { usersId,
+      contentsJson,
         updatedAt } = req.body;
 
     const tasks = new Tasks({
-      users_id,
-  contents_json,
+      usersId,
+  contentsJson,
     updatedAt
     });
 
@@ -75,8 +76,8 @@ class TasksController {
     const id = req.query.id;
 
     //Get values from the body
-    const {users_id,
-      contents_json,
+    const {usersId,
+      contentsJson,
         updatedAt } = req.body;
 
     //Try to find group on database
@@ -91,8 +92,8 @@ class TasksController {
     }
 
     //Validate the new values on model
-    tasks.update({users_id,
-      contents_json,
+    tasks.update({usersId,
+      contentsJson,
         updatedAt });
 
     const errors = await validate(tasks);
